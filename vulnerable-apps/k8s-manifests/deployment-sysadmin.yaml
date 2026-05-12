@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sysadmin-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sysadmin
+  template:
+    spec:
+      containers:
+      - name: main
+        image: nginx:latest
+        securityContext:
+          privileged: true
+      hostPID: true  # SEC-K8S-HOST-001
+      hostIPC: true  # SEC-K8S-HOST-002
+      hostNetwork: true  # SEC-K8S-HOST-003

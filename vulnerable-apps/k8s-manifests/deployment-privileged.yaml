@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: privileged-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: privileged
+  template:
+    spec:
+      containers:
+      - name: main
+        image: nginx:latest
+        securityContext:
+          privileged: true  # SEC-K8S-PRIV-001
+          capabilities:
+            add: ["NET_ADMIN"]  # SEC-K8S-CAP-001

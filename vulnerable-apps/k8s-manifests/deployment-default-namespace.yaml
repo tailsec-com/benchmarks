@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-ns-app
+  namespace: default  # SEC-K8S-NS-001 - should not use default namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: default-ns
+  template:
+    spec:
+      serviceAccount: default  # SEC-K8S-SA-001 - default Sa
+      containers:
+      - name: main
+        image: nginx:latest

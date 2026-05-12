@@ -1,0 +1,10 @@
+{
+  "scanner": "scan-k8s",
+  "test_suite": "owasp-benchmark-k8s",
+  "expected": 8,
+  "test_cases": [
+    { "file": "deployment-privileged.yaml", "expected_findings": 2 },
+    { "file": "deployment-default-namespace.yaml", "expected_findings": 2 },
+    { "file": "deployment-sysadmin.yaml", "expected_findings": 4 }
+  ]
+}

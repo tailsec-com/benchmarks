@@ -1,0 +1,10 @@
+{
+  "scanner": "scan-terraform",
+  "test_suite": "owasp-benchmark-terraform",
+  "expected": 5,
+  "test_cases": [
+    { "file": "s3-public-bucket.tf", "expected_findings": 2 },
+    { "file": "iam-admin-user.tf", "expected_findings": 1 },
+    { "file": "rds-unencrypted.tf", "expected_findings": 2 }
+  ]
+}

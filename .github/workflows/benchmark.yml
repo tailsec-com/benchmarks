@@ -1,0 +1,34 @@
+name: OWASP Benchmark
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install scanners
+        run: |
+          npm install -g @tailsec/scan-k8s
+          npm install -g @tailsec/scan-terraform
+          npm install -g @tailsec/scan-docker
+          npm install -g @tailsec/scan-secrets
+          npm install -g @tailsec/scan-sast
+      - name: Run Kubernetes benchmark
+        run: ./owasp-benchmark/test-k8s.sh
+      - name: Run Terraform benchmark
+        run: ./owasp-benchmark/test-terraform.sh
+      - name: Run Docker benchmark
+        run: ./owasp-benchmark/test-docker.sh
+      - name: Run Secrets benchmark
+        run: ./owasp-benchmark/test-secrets.sh
+      - name: Run SAST benchmark
+        run: ./owasp-benchmark/test-sast.sh
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: results/
