@@ -31,3 +31,5 @@ Tests each Tailsec scanner against known-vulnerable code samples.
 ## Adding Test Cases
 
 Add vulnerable code samples to `vulnerable-apps/` and expected results to `expected-results/`.
+
+[![advertisement](https://ads.servead.net/i/48d8fd53-57eb-48eb-8daf-6a207fba55c9.svg)](https://ads.servead.net/c/48d8fd53-57eb-48eb-8daf-6a207fba55c9)
